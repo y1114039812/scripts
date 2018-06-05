@@ -9,7 +9,7 @@ cd zabbix-3.2.3
 ./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --with-mysql
 make && make install
 cp -r /root/zabbix-3.2.3/frontends/php  /var/www/html/zabbix
-chown -R apache.apahche /var/www/html/zabbix/
+chown -R apache.apache /var/www/html/zabbix/
 mkdir /var/log/zabbix
 chown zabbix.zabbix /var/log/zabbix
 ln -s /usr/local/zabbix/etc /etc/zabbix
