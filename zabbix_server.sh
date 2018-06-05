@@ -56,6 +56,9 @@ echo "
 启动zabbix_agentd
 	chkconfig zabbix_agentd on
 	service zabbix_agentd start
+重启服务
+	systemctl restart mariadb
+	systemctl restart httpd
 ##############
 " ; exit 
 
