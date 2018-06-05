@@ -42,8 +42,20 @@ sed -i "/UnsafeUserParameters=/c UnsafeUserParameters=1"  /etc/zabbix/zabbix_age
 echo "
 ##############
 配置数据库
+  创建库: zabbix
+  授权用户: zabbix
+  授权密码: zabbix
+  导入数据: 
+	cd /root/zabbix-3.2.3/database/mysql
+        mysql -u zabbix -pzabbix zabbix < schema.sql 
+	mysql -u zabbix -pzabbix zabbix < images.sql 
+	mysql -u zabbix -pzabbix zabbix < data.sql
 启动zabbix_server
+	chkconfig zabbix_server on
+	service zabbix_server start
 启动zabbix_agentd
+	chkconfig zabbix_agentd on
+	service zabbix_agentd start
 ##############
 " ; exit 
 
