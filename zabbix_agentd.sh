@@ -10,7 +10,7 @@ tar -xf zabbix-3.2.3.tar.gz
 cd zabbix-3.2.3
 ./configure --enable-agent --prefix=/usr/local/zabbix
 make && make install
-/usr/local/zabbix/etc/ /etc/zabbix
+ln -s /usr/local/zabbix/etc/ /etc/zabbix
 mkdir /var/log/zabbix
 chown zabbix.zabbix /var/log/zabbix
 cp /root/zabbix-3.2.3/misc/init.d/fedora/core/zabbix_agentd /etc/init.d/
@@ -24,7 +24,7 @@ sed -i "/^ServerActive=/c ServerActive=192.168.47.203:10051"  /etc/zabbix/zabbix
 sed -i "/^LogFile=/s@/tmp@/var/log/zabbix@"  /etc/zabbix/zabbix_agentd.conf
 sed -i "/UnsafeUserParameters=/c UnsafeUserParameters=1"  /etc/zabbix/zabbix_agentd.conf
 ## change /etc/init.d/zabbix_agentd
-sed -i "/^BASEDIR=/s@/usr/local@&/zabbix@"  /etc/init.d/zabbix_agentd
+sed -i "/BASEDIR=/s@/usr/local@&/zabbix@"  /etc/init.d/zabbix_agentd
 chkconfig zabbix_agentd on
 service zabbix_agentd start
 
