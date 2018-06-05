@@ -6,7 +6,7 @@ useradd zabbix
 cd /root
 tar -xf zabbix-3.2.3.tar.gz
 cd zabbix-3.2.3
-./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --with-mysql --with-net-snmp --with-libcurl --with-libxml2 --with-mysql--enable-java
+./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --with-mysql
 make && make install
 cp -r /root/zabbix-3.2.3/frontends/php  /var/www/html/zabbix
 chown -R apache.apahche /var/www/html/zabbix/
