@@ -1,12 +1,12 @@
 #!/bin/bash
-yum -y install httpd mariadb mariadb-server  gcc gcc-c++ mysql-devel php php-mysql
+yum -y install httpd mariadb mariadb-server  gcc gcc-c++ mysql-devel php php-mysql php-common php-gd php-mbstring php-mcrypt php-devel php-xml php-bcmath
 systemctl start mariadb;systemctl enable mariadb
 systemctl start httpd;systemctl enable httpd
 useradd zabbix
 cd /root
 tar -xf zabbix-3.2.3.tar.gz
 cd zabbix-3.2.3
-./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --with-mysql
+./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --with-mysql --with-net-snmp --with-libcurl --with-libxml2 --with-mysql--enable-java
 make && make install
 cp -r /root/zabbix-3.2.3/frontends/php  /var/www/html/zabbix
 chown -R apache.apahche /var/www/html/zabbix/
